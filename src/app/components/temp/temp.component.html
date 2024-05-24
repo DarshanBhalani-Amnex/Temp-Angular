@@ -1,0 +1,28 @@
+<div class="container py-5">
+    <table class="table">
+        <thead>
+          <tr>
+            <th class="col">Name</th>
+            <th class="col">Email</th>
+            <th class="col">Body</th>
+          </tr>
+        </thead>
+        <tbody>
+            @for(d of data;track d.id){
+                <tr>
+                    <td>
+                        {{d.name}}
+                    </td>
+                    <td>
+                        {{d.email}}
+                    </td>
+                    <td>
+                        {{d.body}}
+                    </td>
+                </tr>
+                }
+          
+        </tbody>
+      </table>
+</div>
+
