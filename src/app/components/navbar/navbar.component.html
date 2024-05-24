@@ -5,7 +5,7 @@
     
 
       <!-- sidbar -->
-    <div class="sidebar ">
+    <div [class.open]="isClassAdded" class="sidebar ">
         <div class="logo_details">
           <i class="bx bxl-audible icon"></i>
           <div class="logo_name">A M N E X</div>
@@ -35,10 +35,15 @@
                 <ul class="navbar-nav mb-2 mb-lg-0">
                     <li class="nav-item">
                         <a class="nav-link active" aria-current="page" href="#">Home</a>
+                      </li >
+                      <li class="nav-item">
+                        <button (click)="toggleClass()" class="btn btn-secondary">Toggle Sidebar</button>
                       </li>
                 </ul>
               </div>
             </div>
           </nav>
+          <app-dashboard></app-dashboard>
       </section>
 <div>
+

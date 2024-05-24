@@ -1,32 +1,62 @@
 <div class="container-fluid d-flex justify-content-around pt-5" style="height: 35vh;">
-    <app-circular-counter [title]="'Overspeed'" [count]="'15'" (click)='fatchData("posts")'></app-circular-counter>
-    <app-circular-counter [title]="'AQI'" [count]="'11'" (click)='fatchData("albums")'></app-circular-counter>
+    <app-circular-counter [title]="'OverSpeed'" [count]="incidentAQI.length " (click)='fatchData("OverSpeed")'></app-circular-counter>
+    <app-circular-counter [title]="'AQI'" [count]="incidentOverSpeed.length" (click)='fatchData("AQI")'></app-circular-counter>
     <app-circular-counter [title]="'Incident 3'" [count]="'5'" (click)='fatchData("photos")'></app-circular-counter>
     <app-circular-counter [title]="'Incident 4'" [count]="'8'" (click)='fatchData("todos")'></app-circular-counter>
 </div>
-@if(flag){
+@if(flag2){
     <div class="container pt-5">
         <table class="table">
             <thead>
               <tr>
-                <th class="col">Id</th>
-                <th class="col">Title</th>
+                <th class="col">Area</th>
+                <th class="col">Description</th>
+                <th class="col">Time Stamp</th>
               </tr>
             </thead>
             <tbody>
-                @for(d of data;track d.id){
+                @for(d of incidentAQI;track d.id){
                     <tr>
                         <td>
-                            {{d.id}}
+                            {{d.area}}
                         </td>
                         <td>
-                            {{d.title}}
+                            {{d.description}}
+                        </td>
+                        <td>
+                            {{d.timeStamp}}
                         </td>
                     </tr>
                     }
             </tbody>
           </table>
     </div>
-    
-    
+}
+@else if(flag1){
+        <div class="container pt-5">
+            <table class="table">
+                <thead>
+                  <tr>
+                    <th class="col">Vehicle No.</th>
+                    <th class="col">Description</th>
+                    <th class="col">Time Stamp</th>
+                  </tr>
+                </thead>
+                <tbody>
+                    @for(d of incidentOverSpeed;track d.id){
+                        <tr>
+                            <td>
+                                {{d.vehicleNo}}
+                            </td>
+                            <td>
+                                {{d.description}}
+                            </td>
+                            <td>
+                                {{d.timeStamp}}
+                            </td>
+                        </tr>
+                        }
+                </tbody>
+              </table>
+        </div>
 }

@@ -11,17 +11,27 @@ import { CircularCounterComponent } from '../circular-counter/circular-counter.c
 })
 export class DashboardComponent {
   httpClient=inject(HttpClient);
-  flag=false;
-  data:any=[];
+  flag1=false;
+  flag2=false;
+  incidentAQI:any=[];
+  incidentOverSpeed:any=[];
   ngOnInit():void{
-    
+    this.httpClient.get('https://localhost:7091/AQI/GetAllIncidents').subscribe((data:any) => {
+      this.incidentAQI=data['body'];
+    });
+    this.httpClient.get('https://localhost:7091/OverSpeed/GetAllIncidents').subscribe((data:any) => {
+      this.incidentOverSpeed=data['body'];
+    });
   }
 
   fatchData(message:string){
-    this.httpClient.get('https://jsonplaceholder.typicode.com/'+message).subscribe((data:any) => {
-      this.data=data;
-this.flag=true;
-    });
+    if(message==='AQI'){
+    this.flag1=false;
+    this.flag2=true;
+    }
+    else if(message==='OverSpeed'){
+      this.flag2=false;
+      this.flag1=true;
+    }
   }
- 
 }
